@@ -15,19 +15,19 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'itchyny/lightline.vim'
 " vim-indent-guidesを追加
 NeoBundle 'nathanaelkane/vim-indent-guides'
-" molokai（colorscheme）を追加
+" colorschemeを追加
 NeoBundle 'tomasr/molokai'
-
-NeoBundleCheck
+NeoBundle 'sjl/badwolf'
+NeoBundle 'w0ng/vim-hybrid'
 
 call neobundle#end()
 
-" Required:
-filetype plugin indent on
-
 " 未インストールのプラグインがある場合、インストールするかどうかを尋ねてくれるようにする設定
 " 毎回聞かれると邪魔な場合もあるので、この設定は任意です。
-"NeoBundleCheck
+NeoBundleCheck
+
+" Required:
+filetype plugin indent on
 
 "-------------------------
 " End Neobundle Settings.
@@ -44,10 +44,20 @@ set shiftwidth=4 "オートインデント時にインデントする文字数
 set expandtab
 set smartindent "オートインデント
 
+augroup vimrc
+autocmd! FileType python setlocal shiftwidth=4 tabstop=4 softtabstop=2
+autocmd! FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd! FileType htmldjango setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd! FileType css  setlocal shiftwidth=4 tabstop=2 softtabstop=2
+augroup END
+
 "###検索設定###
 set ignorecase "大文字/小文字の区別なく検索
 set smartcase "検索文字列に大文字が含まれている場合は区別して検索
 set wrapscan "検索時に最後まで行ったら最初に戻る
+
+"###コマンドラインの補完###
+set wildmenu
 
 set number background=dark display=lastline,uhex wrap wrapmargin=0 showbreak= notitle guioptions=ce
 set showmatch matchtime=1 noshowmode shortmess+=I cmdheight=1 cmdwinheight=10 scrolloff=0
@@ -58,7 +68,7 @@ if has('gui_running') | set lines=999 columns=999 | else | set t_Co=256 | endif
 silent! let [&t_SI,&t_EI] = ["\e]50;CursorShape=1\x7","\e]50;CursorShape=0\x7"]
 
 " vim-indent-guidesの設定
-colorscheme default
+colorscheme badwolf
 " highlight Normal ctermbg=none
 " カラーをオートで設定するかどうか
 let g:indent_guides_auto_colors=0
