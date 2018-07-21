@@ -1,0 +1,12 @@
+[user]
+    name = <NAME>
+    email = <MAIL>
+[color]
+    ui = true
+[core]
+    excludesfile = ~/.gitignore
+    editor = vim
+[alias]
+    co = checkout
+    br = branch
+    l = log --all --graph --pretty='format:%C(yellow)%h%C(green)%d %C(red)%ar %C(reset)%s'
