@@ -37,6 +37,9 @@ if dein#load_state(s:dein_dir)
 
   call dein#add('tyru/caw.vim.git')
 
+  call dein#add('itchyny/lightline.vim')
+  call dein#add('scrooloose/nerdtree')
+
   call dein#end()
   call dein#save_state()
 endif
@@ -75,6 +78,7 @@ set wrapscan "検索時に最後まで行ったら最初に戻る
 "###コマンドラインの補完###
 set wildmenu
 
+" Appearance
 set number background=dark display=lastline,uhex wrap wrapmargin=0 showbreak= notitle guioptions=ce
 set showmatch matchtime=1 noshowmode shortmess+=I cmdheight=1 cmdwinheight=10 scrolloff=0
 set noshowcmd noruler rulerformat= laststatus=2 statusline=%t\ %=\ %m%r%y%w\ %3l:%-2c
