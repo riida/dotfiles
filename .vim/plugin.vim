@@ -1,49 +1,35 @@
-set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+call plug#begin('~/.vim/plugged')
 
-" dein.vimインストール時に指定したディレクトリをセット
-let s:dein_dir = expand('~/.vim/dein')
+Plug 'Shougo/dein.vim'
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+Plug 'Shougo/neocomplete.vim'
+Plug 'Shougo/neomru.vim'
+Plug 'Shougo/neosnippet'
+Plug 'tomasr/molokai'
+Plug 'sjl/badwolf'
+Plug 'w0ng/vim-hybrid'
+Plug 'tyru/caw.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'leafgarland/typescript-vim'
+Plug 'slim-template/vim-slim'
 
-" dein.vimの実体があるディレクトリをセット
-let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+Plug 'Shougo/unite.vim'
 
-" dein.vimが存在していない場合はgithubからclone
-if &runtimepath !~# '/dein.vim'
-  if !isdirectory(s:dein_repo_dir)
-    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
-  endif
-  execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
-endif
+Plug 'honza/vim-snippets'
+Plug 'Shougo/neosnippet-snippets'
+"fatif original molokai
+" Plug 'fatih/molokai'
 
-if dein#load_state(s:dein_dir)
-  call dein#begin(expand('~/.vim/dein'))
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
-  call dein#add('Shougo/dein.vim')
-  call dein#add('Shougo/vimproc.vim', {'build': 'make'})
-  
-  call dein#add('Shougo/neosnippet-snippets')
+" vim-go
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'SirVer/ultisnips'
+Plug 'ctrlpvim/ctrlp.vim'
 
-  call dein#add('Shougo/neocomplete.vim')
-  call dein#add('Shougo/neomru.vim')
-  call dein#add('Shougo/neosnippet')
-
-  call dein#add('tomasr/molokai')
-  call dein#add('sjl/badwolf')
-
-  call dein#add('w0ng/vim-hybrid')
-
-  call dein#add('tyru/caw.vim.git')
-
-  call dein#add('itchyny/lightline.vim')
-  call dein#add('scrooloose/nerdtree')
-
-  call dein#add('leafgarland/typescript-vim')
-
-  call dein#add('slim-template/vim-slim.git')
-
-  call dein#end()
-  call dein#save_state()
-endif
-
-if dein#check_install()
-  call dein#install()
-endif
+call plug#end()
