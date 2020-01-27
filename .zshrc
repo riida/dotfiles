@@ -34,6 +34,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' # 補完時に大文字小�
 ### Glob ###
 setopt extended_glob # グロブ機能を拡張する
 unsetopt caseglob    # ファイルグロブで大文字小文字を区別しない
+setopt globdots      # 明確なドットの指定なしで.から始まるファイルをマッチ
 
 ### History ###
 HISTFILE=~/.zsh_history   # ヒストリを保存するファイル
