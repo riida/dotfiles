@@ -23,7 +23,7 @@ setopt notify            # バックグラウンドジョブの状態変化を�
 # setopt equals            # =commandを`which command`と同じ処理にする
 
 ### Complement ###
-autoload -U compinit; compinit # 補完機能を有効にする
+# autoload -U compinit; compinit # 補完機能を有効にする
 setopt auto_list               # 補完候補を一覧で表示する(d)
 setopt auto_menu               # 補完キー連打で補完候補を順に表示する(d)
 setopt list_packed             # 補完候補をできるだけ詰めて表示する
@@ -34,7 +34,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' # 補完時に大文字小�
 ### Glob ###
 setopt extended_glob # グロブ機能を拡張する
 unsetopt caseglob    # ファイルグロブで大文字小文字を区別しない
-setopt globdots      # 明確なドットの指定なしで.から始まるファイルをマッチ
+# setopt globdots    # 明確なドットの指定なしで.から始まるファイルをマッチ
 
 ### History ###
 HISTFILE=~/.zsh_history   # ヒストリを保存するファイル
@@ -131,6 +131,19 @@ alias ls="ls -G"
 alias ll="ls -l"
 alias la="ls -A"
 
-# cdコマンド実行後、lsを実行する
-#function cd() {
-#  builtin cd $@ && ls;
+# path for mysql
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+
+
+# docker command completion
+plugins=(docker docker-compose)
+fpath=(~/.zsh/completion $fpath)
+autoload -Uz compinit && compinit -i
+
+# awscli command completion
+autoload bashcompinit && bashcompinit
+complete -C '/usr/local/bin/aws_completer' aws
+
+if [ -f ~/.zshrc.ssh.local ]; then
+    source ~/.zshrc.ssh.local
+fi
